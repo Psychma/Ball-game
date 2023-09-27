@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
 
     void RotateMaze()
     {
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
+        mouseX += Input.GetAxis("Mouse X");
+        mouseY += Input.GetAxis("Mouse Y");
 
         float rotateX = mouseX * speed;
         float rotateZ = mouseY * speed;
@@ -28,6 +28,6 @@ public class PlayerController : MonoBehaviour
         rotateX = Mathf.Clamp(rotateX, -maxRotation, maxRotation);
         rotateZ = Mathf.Clamp(rotateZ, -maxRotation, maxRotation);
 
-        transform.eulerAngles = new Vector3(rotateZ, transform.rotation.y, rotateX);
+        transform.eulerAngles = new Vector3(rotateZ, transform.rotation.y, -rotateX);
     }
 }
