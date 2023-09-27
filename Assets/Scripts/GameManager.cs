@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.SetActive(true);
         player.enabled = false;
+        ball.SetActive(false);
         gameOver = true;
     }
 

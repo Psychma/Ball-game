@@ -8,19 +8,11 @@ public class Ball : MonoBehaviour
     public GameManager gm;
     public GameObject[] coins;
     public GameObject door;
+    private int _coinCount;
     
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (coins.Length == 0)
-        {
-            Destroy(door);
-        }
+        _coinCount = coins.Length;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -35,8 +27,12 @@ public class Ball : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("amongus");
             Destroy(other.gameObject);
+            _coinCount--;
+            if (_coinCount <= 0)
+            {
+                Destroy(door);
+            }
         }
     }
 }
